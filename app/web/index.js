@@ -8,7 +8,7 @@ ReactDOM.render(
 'use strict';
 
 const e = React.createElement;
-
+import Home from './screens/home.js'
 class RootComp extends React.Component {
 
   constructor(props) {
