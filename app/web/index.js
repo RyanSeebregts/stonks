@@ -18,11 +18,11 @@ class RootComp extends React.Component {
   }
 
   render() {
-    return e(
+    return (
       <Home />
     );
   }
 }
 
 const domContainer = document.querySelector('#root');
-ReactDOM.render(e(RootComp), domContainer);
+ReactDOM.render((RootComp), domContainer);
