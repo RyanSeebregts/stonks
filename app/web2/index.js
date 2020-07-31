@@ -5,6 +5,7 @@ ReactDOM.render(
 	<div style={{height: '50px', width: '50px', background: 'red'}}></div>
 	, document.getElementById('root'));
 */
+/*
 'use strict';
 
 const e = React.createElement;
@@ -14,6 +15,7 @@ class RootComp extends React.Component {
   constructor(props) {
     super(props);
     this.state = { 
+
 	};
   }
 
@@ -23,6 +25,6 @@ class RootComp extends React.Component {
     );
   }
 }
-
+/*/
 const domContainer = document.querySelector('#root');
-ReactDOM.render(e(RootComp), domContainer);
+ReactDOM.render(e(Home), domContainer);
