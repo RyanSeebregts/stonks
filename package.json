@@ -1,0 +1,27 @@
+{
+	"name": "fintech-starter-kit",
+	"version": "1.0.0",
+	"description": "A quick guide to get you started with the FinTech challenge.",
+	"main": "app/main.js",
+	"author": "SU Hackathon",
+	"license": "Apache 2.0",
+	"homepage": "https://github.com/SUHackathon/fintech-starter-kit#readme",
+	"type": "module",
+	"engines": {
+		"node": "14.x"
+	},
+	"scripts": {},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/SUHackathon/fintech-starter-kit.git"
+	},
+	"bugs": {
+		"url": "https://github.com/SUHackathon/fintech-starter-kit/issues"
+	},
+	"dependencies": {
+		"dotenv": "^8.2.0",
+		"express": "^5.0.0-alpha.8",
+		"pg": "^8.2.1"
+	},
+	"devDependencies": {}
+}

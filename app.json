@@ -1,0 +1,12 @@
+{
+	"name": "fintech-starter-kit",
+	"description": "A quick guide to get you started with the FinTech challenge.",
+	"repository": "https://github.com/SUHackathon/fintech-starter-kit",
+	"logo": "https://cdn.rawgit.com/heroku/node-js-getting-started/master/public/node.svg",
+	"keywords": [
+		"node",
+		"express",
+		"heroku"
+	],
+	"image": "heroku/nodejs"
+}
