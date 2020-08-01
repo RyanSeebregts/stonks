@@ -91,6 +91,36 @@ export default class SalesDB {
 	 */
 	async createTables() {
 
+		console.log('DB - creating tables');
+
+		try {
+		
+			// Connect to the database.
+			const client = await this.connect();
+	
+			// Create the orders table.
+			await client.query(`
+				CREATE TABLE IF NOT EXISTS items(
+					name VARCHAR (50) NOT NULL,
+					brand VARCHAR (50) NOT NULL,
+
+					shopname VARCHAR (50) NOT NULL,
+					tags TEXT [],
+					amount NUMERIC (1000) NOT NULL
+				)
+			`);
+	
+			// Release the database connection.
+			client.release();
+	
+		} catch(error) {
+	
+			console.error(error);
+		}
+	}
+
+	async createTablesOrders() {
+
 		console.log('SalesDB - creating tables');
 
 		try {
@@ -125,55 +155,18 @@ export default class SalesDB {
 	 * @returns {void}
 	 */
 	async insertDefaultData() {
-
+		this.ClearDefaultData()
+		
 		console.log('SalesDB - inserting default data');
 
-		const orders = [
+		const items = [
 			{
-				"date": "2020-07-05 17:25:59",
-				"amount": 599.95,
-				"status": "Delivered"
+				"name": "Mayonaise",
+				"brand": "No Name",
+				"shopname": "Pick n Pay",
+				"tags": ["hello"],
+				"amount": 122
 			},
-			{
-				"date": "2020-07-06 17:26:02",
-				"amount": 250.4,
-				"status": "Shipped"
-			},
-			{
-				"date": "2020-07-06 09:10:11",
-				"amount": 320.14,
-				"status": "Shipped"
-			},
-			{
-				"date": "2020-07-07 09:10:11",
-				"amount": 548.54,
-				"status": "In Progress"
-			},
-			{
-				"date": "2020-07-08 09:10:11",
-				"amount": 438.05,
-				"status": "In Progress"
-			},
-			{
-				"date": "2020-07-08 09:10:11",
-				"amount": 548.0,
-				"status": "In Progress"
-			},
-			{
-				"date": "2020-07-09 09:10:11",
-				"amount": 456.78,
-				"status": "Ready For Pickup"
-			},
-			{
-				"date": "2020-07-10 09:10:11",
-				"amount": 114.7,
-				"status": "New"
-			},
-			{
-				"date": "2020-07-11 09:10:11",
-				"amount": 721.95,
-				"status": "New"
-			}
 		]
 
 		try {
@@ -182,23 +175,41 @@ export default class SalesDB {
 			const client = await this.connect();
 	
 			// Insert each of the demo order records.
-			for(const order of orders) {
+			for(const item of items) {
 
 				await client.query(`
-					INSERT INTO orders (date, amount, status)
-					SELECT $1, $2, $3
-					WHERE NOT EXISTS (
-						SELECT orderno
-						FROM orders
-						WHERE date = $1
-						AND amount = $2
-					);
+					INSERT INTO items (name, brand, shopname, tags, amount)
+					SELECT $1, $2, $3, $4, $5 
 				`, [
-					order.date,
-					order.amount,
-					order.status
+					item.name,
+					item.brand,
+					item.shopname,
+					item.tages,
+					item.amount,
 				]);
 			}
+	
+			// Release the database connection.
+			client.release();
+	
+		} catch(error) {
+	
+			console.error(error);
+		}
+		
+	}
+
+	async ClearDefaultData() {
+
+		console.log('SalesDB - deleting default data');
+
+		try {
+		
+			// Connect to the database.
+			const client = await this.connect();
+	
+			await client.query('DELETE FROM items');
+			
 	
 			// Release the database connection.
 			client.release();

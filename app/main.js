@@ -20,6 +20,13 @@ import SalesDB from './api/connectors/SalesDB.js';
 
 	// Intialise the express web server.
 	const app = express();
+	
+	app.use(function(req, res, next) {
+		res.header("Access-Control-Allow-Origin", "*");
+		res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+		next();
+	});
+
 	app.use(bodyParser.json());
 	
 	// Make all static content in the web folder available via their file names.
