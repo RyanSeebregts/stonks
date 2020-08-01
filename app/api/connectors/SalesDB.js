@@ -167,6 +167,13 @@ export default class SalesDB {
 				"tags": ["hello"],
 				"amount": 122
 			},
+			{
+				"name": "Salt and Vinigar Crisps",
+				"brand": "Simba",
+				"shopname": "Golden Tuck Shop",
+				"tags": ["hello"],
+				"amount": 122
+			},
 		]
 
 		try {
