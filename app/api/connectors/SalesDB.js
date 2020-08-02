@@ -163,7 +163,7 @@ export default class SalesDB {
 	 * @returns {void}
 	 */
 	async insertDefaultData() {
-		this.ClearDefaultData()
+		//this.ClearDefaultData()
 		
 		console.log('SalesDB - inserting default data');
 
