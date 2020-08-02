@@ -105,11 +105,19 @@ export default class SalesDB {
 					brand VARCHAR (50) NOT NULL,
 
 					shopname VARCHAR (50) NOT NULL,
-					tags TEXT [],
 					amount NUMERIC (1000) NOT NULL
 				)
 			`);
 	
+			// Create the orders table.
+			await client.query(`
+				CREATE TABLE IF NOT EXISTS orders(
+					shopname VARCHAR (50) NOT NULL,
+
+					items TEXT[] 
+				)
+			`);
+
 			// Release the database connection.
 			client.release();
 	
@@ -160,20 +168,7 @@ export default class SalesDB {
 		console.log('SalesDB - inserting default data');
 
 		const items = [
-			{
-				"name": "Mayonaise",
-				"brand": "No Name",
-				"shopname": "Pick n Pay",
-				"tags": ["hello"],
-				"amount": 122
-			},
-			{
-				"name": "Salt and Vinigar Crisps",
-				"brand": "Simba",
-				"shopname": "Golden Tuck Shop",
-				"tags": ["hello"],
-				"amount": 122
-			},
+
 		]
 
 		try {

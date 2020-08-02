@@ -3,6 +3,7 @@ import getOrders from './handlers/getOrders.js';
 import createOrder from './handlers/createOrder.js';
 import updateOrder from './handlers/updateOrder.js';
 import getItems from './handlers/getItems.js'
+import createItem from './handlers/createItem.js'
 
 import express from 'express';
 
@@ -15,6 +16,7 @@ router.post('/api/orders', createOrder);
 router.put('/api/orders', updateOrder);
 
 router.get('/api/items', getItems);
+router.post('/api/items', createItem);
 
 
 export default router;
